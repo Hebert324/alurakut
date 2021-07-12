@@ -1,21 +1,61 @@
-import styled from 'styled-components'
+import MainGrid from '../src/components/MainGrid'
+import Box from '../src/components/Box'
+import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
+import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
 
-// const Title = styled.h1`
-//   font-size: 50px;
-//   color: ${({ theme }) => theme.colors.primary};
-// `
-
-const Box = styled.div`
-background-color: #ffffff;
-border-radius: 8px;
-`
+function ProfileSideBar(props) { 
+  return (
+    <Box>
+      <img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} />
+    </Box>
+  )
+}
 
 export default function Home() {
+  const githubUser = "hebert324"
+  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto", "ARTHURPC03", "Al0nnso", "peas", "gustavoguanabara", "marcobrunodev", "juunegreiros"]
+
   return(
-    <main>
-      <Box>Imagem</Box>
-      <Box>Bem vindo</Box>
-      <Box>Comunidades</Box>
-    </main>
+    <>
+    <AlurakutMenu />
+    <MainGrid>
+      <div className="profileArea" style={{ gridArea: 'profileArea' }}>
+        <ProfileSideBar githubUser={githubUser} />
+      </div>
+
+      <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
+        <Box>
+          <h1 className="title">Bem vindo(a)</h1>
+          <OrkutNostalgicIconSet />
+        </Box>
+      </div>
+
+
+      <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
+        <ProfileRelationsBoxWrapper>
+
+          <h2 className="smallTitle">Meus amigos <span style={{ color: '#2E7BB4' }}>({friends.length})</span></h2>
+
+          <ul>
+            {friends.map((itemAtual) => {
+              return (
+                <li>
+                  <a href={`/users/${itemAtual}`} key={itemAtual}>
+                    <img src={`https://github.com/${itemAtual}.png`} />
+                    <span>{itemAtual}</span>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+
+        </ProfileRelationsBoxWrapper>
+
+        <Box>
+          Comunidades
+        </Box>
+      </div>
+    </MainGrid>
+    </>
   )
 }
