@@ -1,10 +1,16 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  /* Reset CSS */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+    background-color: #D9E6F6;
   }
 `
 
