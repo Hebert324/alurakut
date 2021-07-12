@@ -13,8 +13,11 @@ function ProfileSideBar(props) {
 
 export default function Home() {
   const githubUser = "hebert324"
-  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto"]
+  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto"] 
+  // , "ARTHURPC03", "Al0nnso", "peas", "gustavoguanabara", "marcobrunodev", "juunegreiros"
+  
   const comunits = ""
+
 
   return(
     <>
