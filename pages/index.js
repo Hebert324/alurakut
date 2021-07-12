@@ -14,7 +14,7 @@ function ProfileSideBar(props) {
 export default function Home() {
   const githubUser = "hebert324"
   const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto"]
-  const comunits = ''
+  const comunits = ""
 
   return(
     <>
