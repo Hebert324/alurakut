@@ -13,7 +13,8 @@ function ProfileSideBar(props) {
 
 export default function Home() {
   const githubUser = "hebert324"
-  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto", "ARTHURPC03", "Al0nnso", "peas", "gustavoguanabara", "marcobrunodev", "juunegreiros"]
+  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto"]
+  const comunits = ''
 
   return(
     <>
@@ -29,7 +30,6 @@ export default function Home() {
           <OrkutNostalgicIconSet />
         </Box>
       </div>
-
 
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
         <ProfileRelationsBoxWrapper>
@@ -52,7 +52,7 @@ export default function Home() {
         </ProfileRelationsBoxWrapper>
 
         <Box>
-          Comunidades
+        <h2 className="smallTitle">Comunidades <span style={{ color: '#2E7BB4' }}>({comunits.length})</span></h2>
         </Box>
       </div>
     </MainGrid>
