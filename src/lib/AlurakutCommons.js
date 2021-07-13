@@ -87,6 +87,7 @@ AlurakutMenu.Wrapper = styled.header`
     right: 0;
     top: 48px;
     transition: .3s;
+    overflow: hidden;
     pointer-events: ${({ isMenuOpen }) => isMenuOpen ? 'all' : 'none'};
     opacity: ${({ isMenuOpen }) => isMenuOpen ? '1' : '0'};
     transform: ${({ isMenuOpen }) => isMenuOpen ? 'translateY(0)' : 'translateY(calc(-100% - 48px))'};
@@ -117,7 +118,7 @@ AlurakutMenu.Wrapper = styled.header`
   .container {
     background-color: ${props => props.theme.colors.primary};
     padding: 7px 16px;
-    max-width: 1110px;
+    max-width: 1100px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -125,6 +126,7 @@ AlurakutMenu.Wrapper = styled.header`
     z-index: 101;
     @media(min-width: 860px) {
       justify-content: flex-start;
+      overflow: hidden
     }
     button {
       border: 0;
