@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Box = styled.div`
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.secondary};
   border-radius: 8px;
   padding: 16px;
   
@@ -9,16 +9,19 @@ const Box = styled.div`
   margin-bottom: 10px;
   .boxLink {
     font-size: 14px;
-    color: #2E7BB4;
+    color: ${props => props.theme.colors.name};
     text-decoration: none;
     font-weight: 800;
   }
   .title {
+    color: ${props => props.theme.colors.textStandard};
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 20px;
+    
   }
   .subTitle {
+    color: ${props => props.theme.colors.textStandard};
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 20px;
@@ -27,7 +30,7 @@ const Box = styled.div`
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: #333333;
+    color: ${props => props.theme.colors.textStandard};
     margin-bottom: 20px;
   }
   hr {
@@ -38,14 +41,14 @@ const Box = styled.div`
   }
   input {
     width: 100%;
-    background-color: #F4F4F4;
-    color: #333333;
+    background-color: ${props => props.theme.colors.inputColor};
+    color: ${props => props.theme.colors.textStandard};
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
     ::placeholder {
-      color: #333333;
+      color: ${props => props.theme.colors.textStandard};
       opacity: 1;
     }
   }
@@ -54,7 +57,7 @@ const Box = styled.div`
     padding: 8px 12px;
     color: #FFFFFF;
     border-radius: 10000px;
-    background-color: #6F92BB;
+    background-color: ${props => props.theme.colors.buttonSubmit};
   }
 `
 export default Box

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
+import Switch from 'react-switch'
+import { ThemeContext } from 'styled-components';
 
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
@@ -19,8 +21,13 @@ function Link({ href, children, ...props }) {
 // ================================================================================================================
 // Menu
 // ================================================================================================================
-export function AlurakutMenu({ githubUser }) {
+
+
+export function AlurakutMenu({ githubUser, toggleTheme }) {
   const [isMenuOpen, setMenuState] = React.useState(false);
+
+  const {title} = useContext(ThemeContext)
+
   return (
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
@@ -35,6 +42,19 @@ export function AlurakutMenu({ githubUser }) {
         </nav>
 
         <nav>
+        <div style={{ marginRight: 10 }}>
+          <Switch
+            onChange={toggleTheme}
+            checked={title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={35}
+            handleDiameter={18}
+            offColor="#5579A1"
+            onColor="#D9E6F6"
+          />
+        </div>
           <a href={`/logout`}>
             Sair
           </a>
@@ -50,14 +70,15 @@ export function AlurakutMenu({ githubUser }) {
       </div>
       <AlurakutMenuProfileSidebar githubUser={githubUser} />
     </AlurakutMenu.Wrapper>
+
   )
 }
 
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
+  background-color: ${props => props.theme.colors.primary};
   .alurakutMenuProfileSidebar {
-    background: white;
+    background: ${props => props.theme.colors.backgroundMobile};
     position: fixed;
     z-index: 100;
     padding: 46px;
@@ -81,7 +102,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     .boxLink {
       font-size: 18px;
-      color: #2E7BB4;
+      color: ${props => props.theme.colors.name};
       -webkit-text-decoration: none;
       text-decoration: none;
       font-weight: 800;
@@ -94,7 +115,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
   }
   .container {
-    background-color: #308BC5;
+    background-color: ${props => props.theme.colors.primary};
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -114,10 +135,11 @@ AlurakutMenu.Wrapper = styled.header`
         display: none;
       }
     }
-    nav {
+    nav, div{
       display: none;
       @media(min-width: 860px) {
         display: flex;
+        align-items: center;
       }
       a {
         font-size: 12px;
@@ -141,7 +163,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     input {
       color: #ffffff;
-      background: #5579A1;
+      background: ${props => props.theme.colors.buttons};
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});
@@ -157,10 +179,11 @@ AlurakutMenu.Wrapper = styled.header`
   }
 `;
 AlurakutMenu.Logo = styled.img`
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.secondary};
   padding: 9px 14px;
   border-radius: 1000px;
   height: 34px;
+  margin-right: 10px;
 `;
 
 function AlurakutMenuProfileSidebar({ githubUser }) {
@@ -223,7 +246,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
     font-size: 12px;
-    color: #2E7BB4;
+    color: ${props => props.theme.colors.textMenuBar};
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -291,7 +314,7 @@ OrkutNostalgicIconSet.List = styled.ul`
   flex-wrap: wrap;
   li {
     font-size: 12px;
-    color: #5A5A5A;
+    color: ${props => props.theme.colors.liIcons};
     display: grid;
     grid-template-areas:
       "title title"
