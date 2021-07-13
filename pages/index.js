@@ -2,6 +2,7 @@ import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
+import { useState, useEffect } from 'react'
 
 function ProfileSideBar(props) { 
   return (
@@ -13,11 +14,22 @@ function ProfileSideBar(props) {
 
 export default function Home() {
   const githubUser = "hebert324"
-  const friends = ["diego3g", "jakeliny", "maykbrito", "zezinnnnn", "rafaballerini", "omariosouto"] 
-  // , "ARTHURPC03", "Al0nnso", "peas", "gustavoguanabara", "marcobrunodev", "juunegreiros"
-  
-  const comunits = ""
 
+  const [followers, setFollowers] = useState([])
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${githubUser}/following`)
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      return setFollowers(data)
+    }, [])
+  })
+
+  const follower = followers.slice(0, 6)
+
+  const comunits = ''
 
   return(
     <>
@@ -37,15 +49,15 @@ export default function Home() {
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
         <ProfileRelationsBoxWrapper>
 
-          <h2 className="smallTitle">Meus amigos <span style={{ color: '#2E7BB4' }}>({friends.length})</span></h2>
+          <h2 className="smallTitle">Meus amigos <span style={{ color: '#2E7BB4' }}>({followers.length})</span></h2>
 
           <ul>
-            {friends.map((itemAtual) => {
+            {follower.map((follower) => {
               return (
                 <li>
-                  <a href={`/users/${itemAtual}`} key={itemAtual}>
-                    <img src={`https://github.com/${itemAtual}.png`} />
-                    <span>{itemAtual}</span>
+                  <a href={`/users/${follower.login}`} key={follower.id}>
+                    <img src={`https://github.com/${follower.login}.png`} />
+                    <span>{follower.login}</span>
                   </a>
                 </li>
               )
