@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react'
 
 function ProfileSideBar(props) { 
   return (
-    <Box>
+    <Box as="aside">
       <a target="_blank" href={`https://github.com/${props.githubUser}`}><img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} /></a>
 
       <hr />
