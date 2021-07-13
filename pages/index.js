@@ -7,12 +7,13 @@ import { useState, useEffect } from 'react'
 function ProfileSideBar(props) { 
   return (
     <Box>
-      <img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} />
+      <a target="_blank" href={`https://github.com/${props.githubUser}`}><img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} /></a>
     </Box>
   )
 }
 
 export default function Home() {
+  // github API
   const githubUser = "hebert324"
 
   const [followers, setFollowers] = useState([])
@@ -55,7 +56,7 @@ export default function Home() {
             {follower.map((follower) => {
               return (
                 <li>
-                  <a href={`/users/${follower.login}`} key={follower.id}>
+                  <a href={`https://github.com/${follower.login}`} key={follower.id} target="_blank">
                     <img src={`https://github.com/${follower.login}.png`} />
                     <span>{follower.login}</span>
                   </a>
