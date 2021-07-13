@@ -42,6 +42,8 @@ export default function Home() {
 
   // comunidades
   const [comunits, setComunits] = useState([])
+  const [titleCommunity, setTitleCommunity] = useState([])
+  const [imageCommunity, setImageCommunity] = useState([])
 
   return(
     <>
@@ -70,8 +72,8 @@ export default function Home() {
               title: dadosDoForm.get("title"),
               image: dadosDoForm.get("image")
             }
+
             setComunits([...comunits, comunit])
-            
           }}>
             
             <div>
@@ -88,7 +90,7 @@ export default function Home() {
               placeholder="Coloque a URL para usarmos de capa" 
               name="image" 
               aria-label="Coloque uma URL para usarmos de capa."
-              type="text" 
+              type="text"
             />
             </div>
 
