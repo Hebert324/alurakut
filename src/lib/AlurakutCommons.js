@@ -64,6 +64,8 @@ AlurakutMenu.Wrapper = styled.header`
     left: 0;
     right: 0;
     top: 48px;
+    overflow: ;
+    overflow-x:  ;
     transition: .3s;
     pointer-events: ${({ isMenuOpen }) => isMenuOpen ? 'all' : 'none'};
     opacity: ${({ isMenuOpen }) => isMenuOpen ? '1' : '0'};

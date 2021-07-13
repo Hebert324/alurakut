@@ -2,7 +2,7 @@ import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function ProfileSideBar(props) { 
   return (
@@ -41,11 +41,11 @@ export default function Home() {
   const follower = followers.slice(0, 6)
 
   // comunidades
-  const comunits = ["alurakut"]
+  const [comunits, setComunits] = useState([])
 
   return(
     <>
-    <AlurakutMenu />
+    <AlurakutMenu githubUser={githubUser} />
     <MainGrid>
       <div className="profileArea" style={{ gridArea: 'profileArea' }}>
         <ProfileSideBar githubUser={githubUser} />
@@ -60,7 +60,20 @@ export default function Home() {
         <Box>
           <h2 className="subTitle">Oque você deseja fazer?</h2>
 
-          <form onSubmit={(e) => {e.preventDefault()}}>
+          <form onSubmit={(e) => {
+            e.preventDefault()
+
+            const dadosDoForm = new FormData(e.target)
+
+            const comunit = {
+              id: new Date().toISOString(),
+              title: dadosDoForm.get("title"),
+              image: dadosDoForm.get("image")
+            }
+            setComunits([...comunits, comunit])
+            
+          }}>
+            
             <div>
               <input 
               placeholder="Qual vai ser o nome da sua comunidade?" 
@@ -73,7 +86,7 @@ export default function Home() {
             <div>
             <input 
               placeholder="Coloque a URL para usarmos de capa" 
-              name="title" 
+              name="image" 
               aria-label="Coloque uma URL para usarmos de capa."
             />
             </div>
@@ -97,8 +110,8 @@ export default function Home() {
         <ul>
           {follower.map((follower) => {
             return (
-              <li>
-                <a href={`https://github.com/${follower.login}`} key={follower.id} target="_blank">
+              <li key={follower.id}>
+                <a href={`https://github.com/${follower.login}`} target="_blank">
                   <img src={`https://github.com/${follower.login}.png`} />
                   <span>{follower.login}</span>
                 </a>
@@ -119,10 +132,10 @@ export default function Home() {
         <ul>
           {comunits.map((comunit) => {
             return (
-              <li>
-                <a href={`https://github.com/${comunit}`} key={comunit} target="_blank">
-                  <img src={`http://placehold.it/300x300`} />
-                  <span>{comunit}</span>
+              <li key={comunit.id}>
+                <a href={`/users/${comunit.title}`}>
+                  <img src={`${comunit.image}`} />
+                  <span>{comunit.title}</span>
                 </a>
               </li>            
             )
