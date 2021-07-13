@@ -24,8 +24,8 @@ export default function Home() {
     })
     .then((data) => {
       return setFollowers(data)
-    }, [])
-  })
+    })
+  }, [])
 
   const follower = followers.slice(0, 6)
 
