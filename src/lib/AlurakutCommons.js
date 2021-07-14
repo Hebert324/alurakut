@@ -147,10 +147,8 @@ AlurakutMenu.Wrapper = styled.header`
       #toggle2{
         display: flex;
         margin-right: 50px;
+        align-items:center;
       }
-    }
-    #toggle2{
-      align-items:center;
     }
     button {
       border: 0;
@@ -166,9 +164,6 @@ AlurakutMenu.Wrapper = styled.header`
       @media(min-width: 860px) {
         display: flex;
         align-items: center;
-      }
-      #toggle2{
-        display: inline;
       }
       a {
         font-size: 12px;
@@ -212,7 +207,6 @@ AlurakutMenu.Logo = styled.img`
   padding: 9px 14px;
   border-radius: 1000px;
   height: 34px;
-  margin-right: 10px;
 `;
 
 function AlurakutMenuProfileSidebar({ githubUser }) {

@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: sans-serif;
     background-color: ${props => props.theme.colors.background};
+    transition: .3s;
   }
 
   #__next {
