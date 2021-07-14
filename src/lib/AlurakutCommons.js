@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
 import NextLink from 'next/link';
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components';
@@ -17,6 +17,11 @@ function Link({ href, children, ...props }) {
     </NextLink>
   )
 }
+const GlobalStyle = createGlobalStyle`
+    body {
+      ${({ isMenuOpen }) => isMenuOpen && "overflow: hidden"};
+    }
+  `
 
 // ================================================================================================================
 // Menu
@@ -29,6 +34,8 @@ export function AlurakutMenu({ githubUser, toggleTheme }) {
   const {title} = useContext(ThemeContext)
 
   return (
+    <>
+    <GlobalStyle isMenuOpen={isMenuOpen} />
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
         <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
@@ -84,7 +91,7 @@ export function AlurakutMenu({ githubUser, toggleTheme }) {
       </div>
       <AlurakutMenuProfileSidebar githubUser={githubUser} />
     </AlurakutMenu.Wrapper>
-
+  </>
   )
 }
 
@@ -93,10 +100,10 @@ AlurakutMenu.Wrapper = styled.header`
   background-color: ${props => props.theme.colors.primary};
   .alurakutMenuProfileSidebar {
     background: ${props => props.theme.colors.backgroundMobile};
-    position: absolute;
+    position: fixed;
     z-index: 100;
     padding: 46px;
-    bottom: -50vh;
+    bottom: 0;
     left: 0;
     right: 0;
     top: 48px;
