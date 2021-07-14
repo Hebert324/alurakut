@@ -16,6 +16,10 @@ export default {
 
         name: '#57beff',
         liIcons: '#e4e4e4',
+        linksMenu: '#e6129f',
+        linhaHr: '#ff46c136',
+        hoverMenuBar: '#308BC5',
+        hoverInput: '#888888a6',
     },
 }
 

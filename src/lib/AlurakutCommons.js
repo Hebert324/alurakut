@@ -59,7 +59,7 @@ export function AlurakutMenu({ githubUser, toggleTheme }) {
             width={35}
             handleDiameter={18}
             offColor="#5579A1"
-            onColor="#D9E6F6"
+            onColor="#101010"
           />
         </div>
           <a href={`/logout`}>
@@ -132,7 +132,7 @@ AlurakutMenu.Wrapper = styled.header`
       margin-top: 12px;
       margin-bottom: 8px;
       border-color: transparent;
-      border-bottom-color: #ECF2FA;
+      border-bottom-color: ${props => props.theme.colors.linhaHr};
     }
   }
   .container {
@@ -174,7 +174,7 @@ AlurakutMenu.Wrapper = styled.header`
       }
       a {
         font-size: 12px;
-        color: white;
+        color: ${props => props.theme.colors.linksMenu};
         padding: 10px 16px;
         position: relative;
         text-decoration: none;
@@ -223,7 +223,7 @@ function AlurakutMenuProfileSidebar({ githubUser }) {
         <img src={`https://github.com/${githubUser}.png`} style={{ borderRadius: '8px', margin: '0 auto', maxWidth: '75%'}} />
         <hr />
         <p>
-          <a className="boxLink" href={`/user/${githubUser}`}>
+          <a className="boxLink" target="_blank" href={`https://github.com/${githubUser}`}>
             {githubUser}
           </a>
         </p>
@@ -532,6 +532,7 @@ export const AlurakutStyles = css`
     &:hover,
     &:focus {
       opacity: .8;
+      color: ${props => props.theme.colors.hoverMenuBar};
     }
     &:disabled {
       cursor: not-allowed;
@@ -547,7 +548,7 @@ export const AlurakutStyles = css`
     }
     &:hover,
     &:focus {
-      box-shadow: 0px 0px 5px #33333357;
+      box-shadow: 0px 0px 5px ${props => props.theme.colors.hoverInput};
     }
   }
   ${AlurakutLoginScreen}

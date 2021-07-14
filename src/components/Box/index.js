@@ -37,7 +37,7 @@ const Box = styled.div`
     margin-top: 12px;
     margin-bottom: 8px;
     border-color: transparent;
-    border-bottom-color: #ECF2FA;
+    border-bottom-color: ${props => props.theme.colors.linhaHr};
   }
   input {
     width: 100%;

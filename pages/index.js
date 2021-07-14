@@ -12,7 +12,7 @@ function ProfileSideBar(props) {
       <hr />
 
       <p>
-        <a className="boxLink" href={`https://github.com/${props.githubUser}`}>{props.githubUser}</a>
+        <a className="boxLink" target="_blank" href={`https://github.com/${props.githubUser}`}>{props.githubUser}</a>
       </p>
 
       <hr />
@@ -23,22 +23,49 @@ function ProfileSideBar(props) {
 }
 
 export default function Home() {
-  // github API
   const githubUser = "hebert324"
-
-  const [followers, setFollowers] = useState([])
+  
+  // github API para pessoas que estou seguindo ----------
+  const [following, setfollowing] = useState([])
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${githubUser}/following`)
     .then((response) => {
-      return response.json()
+      if(response.ok){
+        return response.json()
+      }
+      throw new Error("Erro da API do github: " + response.status)
+    })
+    .then((data) => {
+      return setfollowing(data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }, [])
+
+  const peopleYouAreFollowing = following.slice(0, 6)
+
+  // github API para pessoas que estão me seguindo ---------
+  const [followers, setFollowers] = useState([])
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${githubUser}/followers`)
+    .then((response) => {
+      if(response.ok){
+        return response.json()
+      }
+      throw new Error("Erro da API do github: " + response.status)
     })
     .then((data) => {
       return setFollowers(data)
     })
+    .catch((error) => {
+      console.log(error)
+    })
   }, [])
 
-  const follower = followers.slice(0, 6)
+  const peopleFollwers = followers.slice(0, 6)
 
   // comunidades
   const [comunits, setComunits] = useState([])
@@ -104,18 +131,40 @@ export default function Home() {
 
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
 
-      {/* Amigos */}
+      {/* Seguindo */}
       <ProfileRelationsBoxWrapper>
 
-        <h2 className="smallTitle">Meus amigos <span style={{ color: '#2E7BB4' }}>({followers.length})</span></h2>
+        <h2 className="smallTitle">Seguindo <span style={{ color: '#2E7BB4' }}>({following.length})</span></h2>
 
         <ul>
-          {follower.map((follower) => {
+          {peopleYouAreFollowing.map((following) => {
             return (
-              <li key={follower.id}>
-                <a href={`https://github.com/${follower.login}`} target="_blank">
-                  <img src={`https://github.com/${follower.login}.png`} />
-                  <span>{follower.login}</span>
+              <li key={following.id}>
+                <a href={`https://github.com/${following.login}`} target="_blank">
+                  <img src={`https://github.com/${following.login}.png`} />
+                  <span>{following.login}</span>
+                </a>
+              </li>            
+            )
+          })}
+        </ul>
+
+        <hr />
+
+      </ProfileRelationsBoxWrapper>
+
+      {/* Seguidores */}
+      <ProfileRelationsBoxWrapper>
+
+        <h2 className="smallTitle">Seguidores <span style={{ color: '#2E7BB4' }}>({followers.length})</span></h2>
+
+        <ul>
+          {peopleFollwers.map((following) => {
+            return (
+              <li key={following.id}>
+                <a href={`https://github.com/${following.login}`} target="_blank">
+                  <img src={`https://github.com/${following.login}.png`} />
+                  <span>{following.login}</span>
                 </a>
               </li>            
             )
