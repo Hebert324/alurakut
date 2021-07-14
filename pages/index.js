@@ -22,6 +22,30 @@ function ProfileSideBar(props) {
   )
 }
 
+function ProfileRelationsBox(props) {
+  return(
+  <ProfileRelationsBoxWrapper>
+
+  <h2 className="smallTitle">{props.title} <span style={{ color: '#2E7BB4' }}>({props.items.length})</span></h2>
+
+  <ul>
+    {props.slice.map((following) => {
+      return (
+        <li key={following.id}>
+          <a href={`https://github.com/${following.login}`} target="_blank">
+            <img src={`https://github.com/${following.login}.png`} />
+            <span>{following.login}</span>
+          </a>
+        </li>            
+      )
+    })}
+  </ul>
+
+  <hr />
+
+</ProfileRelationsBoxWrapper>)
+}
+
 export default function Home() {
   const githubUser = "hebert324"
   
@@ -67,23 +91,28 @@ export default function Home() {
 
   const peopleFollwers = followers.slice(0, 6)
 
-  // comunidades
+  // comunidades ------------------
   const [comunits, setComunits] = useState([])
 
   return(
     <>
     
     <MainGrid>
+      {/* Área do Perfil */}
       <div className="profileArea" style={{ gridArea: 'profileArea' }}>
         <ProfileSideBar githubUser={githubUser} />
       </div>
 
+      {/* Box Bem vindo */}
       <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
+
+        {/* Bem vindo */}
         <Box>
           <h1 className="title">Bem vindo(a), {githubUser}</h1>
           <OrkutNostalgicIconSet />
         </Box>
 
+        {/* box para criar comunidade */}
         <Box>
           <h2 className="subTitle">Oque você deseja fazer?</h2>
 
@@ -129,51 +158,14 @@ export default function Home() {
         </Box>
       </div>
 
+      {/*Área de Relações */}
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
 
       {/* Seguindo */}
-      <ProfileRelationsBoxWrapper>
-
-        <h2 className="smallTitle">Seguindo <span style={{ color: '#2E7BB4' }}>({following.length})</span></h2>
-
-        <ul>
-          {peopleYouAreFollowing.map((following) => {
-            return (
-              <li key={following.id}>
-                <a href={`https://github.com/${following.login}`} target="_blank">
-                  <img src={`https://github.com/${following.login}.png`} />
-                  <span>{following.login}</span>
-                </a>
-              </li>            
-            )
-          })}
-        </ul>
-
-        <hr />
-
-      </ProfileRelationsBoxWrapper>
+      <ProfileRelationsBox title='Seguindo' items={following} slice={peopleYouAreFollowing}/>
 
       {/* Seguidores */}
-      <ProfileRelationsBoxWrapper>
-
-        <h2 className="smallTitle">Seguidores <span style={{ color: '#2E7BB4' }}>({followers.length})</span></h2>
-
-        <ul>
-          {peopleFollwers.map((following) => {
-            return (
-              <li key={following.id}>
-                <a href={`https://github.com/${following.login}`} target="_blank">
-                  <img src={`https://github.com/${following.login}.png`} />
-                  <span>{following.login}</span>
-                </a>
-              </li>            
-            )
-          })}
-        </ul>
-
-        <hr />
-
-      </ProfileRelationsBoxWrapper>
+      <ProfileRelationsBox title='Seguidores' items={followers} slice={peopleFollwers}/>
 
       {/* comunidades */}
       <ProfileRelationsBoxWrapper>
