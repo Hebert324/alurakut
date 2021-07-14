@@ -3,7 +3,7 @@ import { AlurakutStyles, AlurakutMenu } from '../src/lib/AlurakutCommons'
 import usePersistedState from '../utils/usePersistedState'
 import light from '../src/themes/light'
 import dark from '../src/themes/dark' 
-import React from 'react'
+import React, { useState } from 'react'
 
 const GlobalStyle = createGlobalStyle`
   /* Reset CSS */
@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App({ Component, pageProps }) {
 
-  const [theme, setTheme] = usePersistedState('theme', light)
+  const [theme, setTheme] = useState(light)
 
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light)
