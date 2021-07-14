@@ -42,7 +42,7 @@ export function AlurakutMenu({ githubUser, toggleTheme }) {
         </nav>
 
         <nav>
-        <div style={{ marginRight: 10 }}>
+        <div id="toggle1" style={{ marginRight: 10}}>
           <Switch
             onChange={toggleTheme}
             checked={title === 'dark'}
@@ -58,10 +58,24 @@ export function AlurakutMenu({ githubUser, toggleTheme }) {
           <a href={`/logout`}>
             Sair
           </a>
-          <div>
+          <div class="div">
             <input placeholder="Pesquisar no Orkut" />
           </div>
         </nav>
+
+        <div id="toggle2">
+          <Switch
+            onChange={toggleTheme}
+            checked={title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={35}
+            handleDiameter={18}
+            offColor="#5579A1"
+            onColor="#D9E6F6"
+          />
+        </div>
 
         <button onClick={() => setMenuState(!isMenuOpen)}>
           {isMenuOpen && <img src={`${BASE_URL}/icons/menu-open.svg?v=${v}`} />}
@@ -79,15 +93,14 @@ AlurakutMenu.Wrapper = styled.header`
   background-color: ${props => props.theme.colors.primary};
   .alurakutMenuProfileSidebar {
     background: ${props => props.theme.colors.backgroundMobile};
-    position: fixed;
+    position: absolute;
     z-index: 100;
     padding: 46px;
-    bottom: 0;
+    bottom: -50vh;
     left: 0;
     right: 0;
     top: 48px;
     transition: .3s;
-    overflow: hidden;
     pointer-events: ${({ isMenuOpen }) => isMenuOpen ? 'all' : 'none'};
     opacity: ${({ isMenuOpen }) => isMenuOpen ? '1' : '0'};
     transform: ${({ isMenuOpen }) => isMenuOpen ? 'translateY(0)' : 'translateY(calc(-100% - 48px))'};
@@ -126,7 +139,18 @@ AlurakutMenu.Wrapper = styled.header`
     z-index: 101;
     @media(min-width: 860px) {
       justify-content: flex-start;
-      overflow: hidden
+      #toggle2{
+        display: none;
+      }
+    }
+    @media(max-width: 860px) {
+      #toggle2{
+        display: flex;
+        margin-right: 50px;
+      }
+    }
+    #toggle2{
+      align-items:center;
     }
     button {
       border: 0;
@@ -137,11 +161,14 @@ AlurakutMenu.Wrapper = styled.header`
         display: none;
       }
     }
-    nav, div{
+    nav, .div{
       display: none;
       @media(min-width: 860px) {
         display: flex;
         align-items: center;
+      }
+      #toggle2{
+        display: inline;
       }
       a {
         font-size: 12px;

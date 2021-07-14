@@ -42,8 +42,6 @@ export default function Home() {
 
   // comunidades
   const [comunits, setComunits] = useState([])
-  const [titleCommunity, setTitleCommunity] = useState([])
-  const [imageCommunity, setImageCommunity] = useState([])
 
   return(
     <>
@@ -74,6 +72,7 @@ export default function Home() {
             }
 
             setComunits([...comunits, comunit])
+            e.target.reset()
           }}>
             
             <div>
