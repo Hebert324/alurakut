@@ -4,7 +4,21 @@ const Box = styled.div`
   background: ${props => props.theme.colors.secondary};
   border-radius: 8px;
   padding: 16px;
-  
+  overflow-y: auto;
+  /* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${props => props.theme.colors.scrollBox}; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+
   /* CSS Pré-Pronto */
   margin-bottom: 10px;
   .boxLink {

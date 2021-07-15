@@ -41,7 +41,6 @@ function ProfileRelationsBox(props) {
     })}
   </ul>
 
-  <hr />
 
 </ProfileRelationsBoxWrapper>)
 }
@@ -51,9 +50,6 @@ export default function Home() {
   
   // github API para pessoas que estou seguindo ----------
   const [following, setfollowing] = useState([])
-
-  // comunidades ------------------
-  const [comunits, setComunits] = useState([])
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${githubUser}/following`)
@@ -71,11 +67,13 @@ export default function Home() {
     })
   }, [])
 
-  const peopleYouAreFollowing = following.slice(0, 6)
-
-  // github API para pessoas que estão me seguindo ---------
+  // use state dos followers
   const [followers, setFollowers] = useState([])
 
+  // use state das comunidades 
+  const [comunits, setComunits] = useState([])
+
+  //API do GraphQL para as comunidades e API das pessoas que estão me seguindo
   useEffect(() => {
     fetch(`https://api.github.com/users/${githubUser}/followers`)
     .then((response) => {
@@ -91,7 +89,7 @@ export default function Home() {
       console.log(error)
     })
 
-    // API GraphQL
+    // API GraphQL para as comunidades
     fetch('https://graphql.datocms.com/', {
       method: 'POST',
       headers: {
@@ -117,8 +115,6 @@ export default function Home() {
     })
 
   }, [])
-
-  const peopleFollwers = followers.slice(0, 6)
 
   return(
     <>
@@ -200,10 +196,10 @@ export default function Home() {
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
 
       {/* Seguindo */}
-      <ProfileRelationsBox title='Seguindo' items={following} slice={peopleYouAreFollowing}/>
+      <ProfileRelationsBox title='Seguindo' items={following} slice={following}/>
 
       {/* Seguidores */}
-      <ProfileRelationsBox title='Seguidores' items={followers} slice={peopleFollwers}/>
+      <ProfileRelationsBox title='Seguidores' items={followers} slice={followers}/>
 
       {/* comunidades */}
       <ProfileRelationsBoxWrapper>
@@ -223,7 +219,6 @@ export default function Home() {
           })}
         </ul>
 
-        <hr />
       </ProfileRelationsBoxWrapper>
       </div>
     </MainGrid>

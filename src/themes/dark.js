@@ -20,6 +20,7 @@ export default {
         linhaHr: '#ff46c136',
         hoverMenuBar: '#308BC5',
         hoverInput: '#888888a6',
+        scrollBox: '#ffffff54',
     },
 }
 
