@@ -148,13 +148,25 @@ export default function Home() {
             const dadosDoForm = new FormData(e.target)
 
             const comunit = {
-              id: new Date().toISOString(),
               title: dadosDoForm.get("title"),
-              image: dadosDoForm.get("image")
+              imageUrl: dadosDoForm.get("image"),
+              creatorSlug: githubUser,
             }
 
-            setComunits([...comunits, comunit])
+            fetch('/api/comunits', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(comunit)
+            })
+            .then(async (res) => {
+              const dados = await res.json()
+              const comunit = dados.register
+              setComunits([...comunits, comunit])
+            })
             e.target.reset()
+
           }}>
             
             <div>
