@@ -52,6 +52,9 @@ export default function Home() {
   // github API para pessoas que estou seguindo ----------
   const [following, setfollowing] = useState([])
 
+  // comunidades ------------------
+  const [comunits, setComunits] = useState([])
+
   useEffect(() => {
     fetch(`https://api.github.com/users/${githubUser}/following`)
     .then((response) => {
@@ -87,12 +90,35 @@ export default function Home() {
     .catch((error) => {
       console.log(error)
     })
+
+    // API GraphQL
+    fetch('https://graphql.datocms.com/', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'b40d8bfa07cadf6e49c13f9c8d9b01',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ "query": `query {
+        allCommunities {
+          id
+          title
+          imageUrl
+          creatorSlug
+        }
+      }` })
+    })
+    .then((res) => {
+      return res.json()
+    })
+    .then((resComplete) => {
+      const comunits = resComplete.data.allCommunities
+      setComunits(comunits)
+    })
+
   }, [])
 
   const peopleFollwers = followers.slice(0, 6)
-
-  // comunidades ------------------
-  const [comunits, setComunits] = useState([])
 
   return(
     <>
@@ -176,8 +202,8 @@ export default function Home() {
           {comunits.map((comunit) => {
             return (
               <li key={comunit.id}>
-                <a href={`/users/${comunit.title}`}>
-                  <img src={`${comunit.image}`} />
+                <a href={`/comunities/${comunit.title}`}>
+                  <img src={`${comunit.imageUrl}`} />
                   <span>{comunit.title}</span>
                 </a>
               </li>            

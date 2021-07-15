@@ -1,4 +1,4 @@
-import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { useState, useEffect } from 'react'
 
 function usePersistedState(key, initialState) {
     const [state, setState] = useState(() => {
