@@ -62,7 +62,7 @@ export function AlurakutMenu({ toggleTheme, githubUser }) {
             onColor="#101010"
           />
         </div>
-          <a href={`/logout`}>
+          <a href={`/login`}>
             Sair
           </a>
           <div className="div">
