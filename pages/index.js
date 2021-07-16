@@ -5,9 +5,20 @@ import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet, AlurakutMenu } from '../src/lib/AlurakutCommons'
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
+import light from '../src/themes/light'
+import dark from '../src/themes/dark'
+import { ThemeProvider } from 'styled-components'
+import  { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+    body {
+      background-color: ${props => props.theme.colors.background};
+    }
+`
 
 function ProfileSideBar(props) { 
   return (
+    <>
     <Box as="aside">
       <a target="_blank" href={`https://github.com/${props.githubUser}`}><img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} /></a>
 
@@ -21,11 +32,14 @@ function ProfileSideBar(props) {
 
       <AlurakutProfileSidebarMenuDefault />
     </Box>
+    </>
   )
 }
 
 function ProfileRelationsBox(props) {
   return(
+  <>
+  <GlobalStyle />
   <ProfileRelationsBoxWrapper>
 
   <h2 className="smallTitle">{props.title} <span style={{ color: '#2E7BB4' }}>({props.items.length})</span></h2>
@@ -44,11 +58,19 @@ function ProfileRelationsBox(props) {
   </ul>
 
 
-</ProfileRelationsBoxWrapper>)
+</ProfileRelationsBoxWrapper>
+</>
+)
 }
 
 export default function Home(props) {
   const githubUser = props.githubUser
+
+  const [theme, setTheme] = useState(light)
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light)
+  }
   
   // github API para pessoas que estou seguindo ----------
   const [following, setfollowing] = useState([])
@@ -120,7 +142,8 @@ export default function Home(props) {
 
   return(
     <>
-    
+    <ThemeProvider theme={theme}>
+    <AlurakutMenu toggleTheme={toggleTheme} githubUser={githubUser}/>
     <MainGrid>
       {/* Área do Perfil */}
       <div className="profileArea" style={{ gridArea: 'profileArea' }}>
@@ -224,10 +247,12 @@ export default function Home(props) {
       </ProfileRelationsBoxWrapper>
       </div>
     </MainGrid>
+    </ThemeProvider>
     </>
   )
 }
 
+// cookies 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context)
   const token = cookies.USER_TOKEN;

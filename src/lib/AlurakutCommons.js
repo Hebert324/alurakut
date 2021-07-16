@@ -216,7 +216,7 @@ AlurakutMenu.Logo = styled.img`
   height: 34px;
 `;
 
-function AlurakutMenuProfileSidebar({ githubUser }) {
+function AlurakutMenuProfileSidebar({githubUser}) {
   return (
     <div className="alurakutMenuProfileSidebar">
       <div>
@@ -265,7 +265,7 @@ export function AlurakutProfileSidebarMenuDefault() {
           <img src={`${BASE_URL}/icons/plus.svg`} />
             GitHub Trends
           </a>
-        <a href="/logout">
+        <a href="/login">
           <img src={`${BASE_URL}//icons/logout.svg`} />
             Sair
           </a>

@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { AlurakutStyles, AlurakutMenu } from '../src/lib/AlurakutCommons'
+import { AlurakutStyles } from '../src/lib/AlurakutCommons'
 import usePersistedState from '../utils/usePersistedState'
 import light from '../src/themes/light'
 import dark from '../src/themes/dark' 
@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: sans-serif;
-    background-color: ${props => props.theme.colors.background};
     transition: .3s;
   }
 
@@ -38,17 +37,10 @@ export default function App({ Component, pageProps }) {
 
   const [theme, setTheme] = useState(light)
 
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light)
-  }
-
-  const githubUser = 'hebert324'
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <AlurakutMenu toggleTheme={ toggleTheme } githubUser={githubUser}/>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
