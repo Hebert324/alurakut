@@ -42,12 +42,12 @@ export default function App({ Component, pageProps }) {
     setTheme(theme.title === 'light' ? dark : light)
   }
 
-  const githubUser = "hebert324"
+  const githubUser = 'hebert324'
 
   return (
     <>
       <ThemeProvider theme={theme}>
-      <GlobalStyle />
+        <GlobalStyle />
         <AlurakutMenu toggleTheme={ toggleTheme } githubUser={githubUser}/>
         <Component {...pageProps} />
       </ThemeProvider>

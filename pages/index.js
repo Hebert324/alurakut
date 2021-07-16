@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from 'react'
+import nookies from 'nookies'
+import jwt from 'jsonwebtoken'
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
-import { AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
+import { AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet, AlurakutMenu } from '../src/lib/AlurakutCommons'
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
-import React, { useState, useEffect } from 'react'
 
 function ProfileSideBar(props) { 
   return (
@@ -45,8 +47,8 @@ function ProfileRelationsBox(props) {
 </ProfileRelationsBoxWrapper>)
 }
 
-export default function Home() {
-  const githubUser = "hebert324"
+export default function Home(props) {
+  const githubUser = props.githubUser
   
   // github API para pessoas que estou seguindo ----------
   const [following, setfollowing] = useState([])
@@ -176,9 +178,9 @@ export default function Home() {
 
             <div>
             <input 
-              placeholder="Coloque a URL para usarmos de capa" 
+              placeholder="Coloque uma URL, da imagem da sua comunidade." 
               name="image" 
-              aria-label="Coloque uma URL para usarmos de capa."
+              aria-label="Coloque uma URL, da imagem da sua comunidade."
               type="text"
             />
             </div>
@@ -224,4 +226,31 @@ export default function Home() {
     </MainGrid>
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context)
+  const token = cookies.USER_TOKEN;
+  const { isAuthenticated } = await fetch('https://alurakut.vercel.app/api/auth', {
+    headers: {
+        Authorization: token
+      }
+  })
+  .then((resposta) => resposta.json())
+
+  if(!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
+
+  const { githubUser } = jwt.decode(token);
+  return {
+    props: {
+      githubUser
+    }, // will be passed to the page component as props
+  }
 }
