@@ -21,14 +21,14 @@ const GlobalStyle = createGlobalStyle`
     body {
       ${({ isMenuOpen }) => isMenuOpen && "overflow: hidden"};
     }
-  `
+`
 
 // ================================================================================================================
 // Menu
 // ================================================================================================================
 
 
-export function AlurakutMenu({ githubUser, toggleTheme }) {
+export function AlurakutMenu({ toggleTheme, githubUser }) {
   const [isMenuOpen, setMenuState] = React.useState(false);
 
   const {title} = useContext(ThemeContext)
