@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import nookies from 'nookies'
 import { createGlobalStyle } from 'styled-components'
+import { toast } from 'react-toastify'
 
 const GlobalStyle = createGlobalStyle`
     header {
         display: none;
         visibility: hidden;
+    }
+    body{
+      background: #D9E6F6;
     }
 `
 
@@ -45,7 +49,12 @@ export default function LoginScreen() {
                     path: '/',
                     maxAge: 86400 * 7,
                 })
-                githubUser.length === 0 ? alert("Digite seu usuário no campo") : router.push('/')
+                // githubUser.length === 0 ? toast('Digite seu usuário no campo') : router.push('/')
+                if(githubUser.length === 0) {
+                  toast.error('Usuário não existe!')
+                }else{
+                  router.push('/')
+                }
             })
             }}>
             <p>
