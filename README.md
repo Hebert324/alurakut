@@ -2,7 +2,7 @@
   <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png">
 </div>
 
-<img alt="gif" src="">
+<img alt="gif" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut.gif">
 
 
 ## Sobre o Projeto:
