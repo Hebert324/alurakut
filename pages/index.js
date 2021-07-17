@@ -45,12 +45,12 @@ function ProfileRelationsBox(props) {
   <h2 className="smallTitle">{props.title} <span style={{ color: '#2E7BB4' }}>({props.items.length})</span></h2>
 
   <ul>
-    {props.slice.map((following) => {
+    {props.items.map((profile) => {
       return (
-        <li key={following.id}>
-          <a href={`https://github.com/${following.login}`} target="_blank">
-            <img src={`https://github.com/${following.login}.png`} />
-            <span>{following.login}</span>
+        <li key={profile.id}>
+          <a href={`https://github.com/${profile.login}`} target="_blank">
+            <img src={`https://github.com/${profile.login}.png`} />
+            <span>{profile.login}</span>
           </a>
         </li>            
       )
@@ -221,10 +221,10 @@ export default function Home(props) {
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
 
       {/* Seguindo */}
-      <ProfileRelationsBox title='Seguindo' items={following} slice={following}/>
+      <ProfileRelationsBox title='Seguindo' items={following} />
 
       {/* Seguidores */}
-      <ProfileRelationsBox title='Seguidores' items={followers} slice={followers}/>
+      <ProfileRelationsBox title='Seguidores' items={followers} />
 
       {/* comunidades */}
       <ProfileRelationsBoxWrapper>
@@ -263,14 +263,16 @@ export async function getServerSideProps(context) {
   })
   .then((resposta) => resposta.json())
 
-  // if(!isAuthenticated) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //       permanent: false,
-  //     }
-  //   }
-  // }
+  console.log(isAuthenticated)
+
+  if(!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
 
   const { githubUser } = jwt.decode(token);
   return {
