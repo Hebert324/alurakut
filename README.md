@@ -2,9 +2,16 @@
   <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png">
 </div>
 
-<img alt="gif" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut.gif">
+<br />
 
+<h3 align="center">Versão de Desktop:</h3>
+<img alt="gif-desktop" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut.gif">
 
+<div align="center">
+  <h3>Versão de Celular:</h3>
+  <img alt="gif-cell" width="300px" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut-cell.gif">
+</div>
+  
 ## Sobre o Projeto:
 
 Nesta imersão recriamos uma das nostalgicas rede social que tivemos no passado.
