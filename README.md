@@ -54,7 +54,7 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.
     # ou abrir o terminal do VScode quando estiver na pasta do projeto.
 
     # Instalar as dependências.
-    $ npm install ou yarn install
+    $ npm install ou yarn add
 
     # Iniciar o servidor.
     $ npm start ou yarn dev
