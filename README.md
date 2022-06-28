@@ -64,5 +64,5 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.
 
 ---
 
-Desenvolvido por [Hebert Rocha](https://www.linkedin.com/in/hebert-rocha-62318a1b3/) juntamente a [Alura](https://www.alura.com.br) 🤿
+Desenvolvido por [Hebert Rocha](https://www.linkedin.com/in/hebert-rc/) juntamente a [Alura](https://www.alura.com.br) 🤿
 
