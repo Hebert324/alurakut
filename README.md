@@ -38,31 +38,34 @@ Você pode verificar o layout em [link](https://www.figma.com/file/UE276JTrrDHN8
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.md) para mais detalhes.
 
-## Teste o site em sua máquina
+## Teste o Projeto em sua máquina:
 
 #### Instruções de instalação
 
-    # Clonar o repositório.
-    $ git clone https://github.com/Hebert324/alurakut
+```bash
+# Clonar o repositório.
+$ git clone https://github.com/Hebert324/Rocket.q
 
-    # Ou
-    # Ir no code (botãozinho verde) e fazer download do zip.
+# Ou
+# Ir no code (botãozinho verde) e fazer download do zip.
 
-    # Entrar na pasta da aplicação.
-    $ cd alurakut
-    
-    # ou abrir o terminal do VScode quando estiver na pasta do projeto.
+# Entrar na pasta da aplicação.
+$ cd rocketq
 
-    # Instalar as dependências.
-    $ npm install ou yarn install
+# ou abrir o terminal do VScode quando estiver na pasta do projeto.
 
-    # Iniciar o servidor.
-    $ npm start ou yarn dev
-    
-    # abra o navegador e digite.
-    $ http://localhost:3000
+# Instalar as dependências.
+$ npm install ou yarn
+
+# Iniciar o servidor.
+$ npm start ou yarn
+
+# abra o navegador e digite.
+$ http://localhost:3000
+```
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.md) para mais detalhes.
 
 ---
 
-Desenvolvido por [Hebert Rocha](https://www.linkedin.com/in/hebert-rc/) juntamente a [Alura](https://www.alura.com.br) 🤿
-
+Desenvolvido por [Hebert Rocha](https://www.linkedin.com/in/hebert-rc/) juntamente a [Rocketseat](https://www.alura.com.br) 🤿
