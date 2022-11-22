@@ -34,10 +34,6 @@ Dentro de 5 dias com utilização de React.js e Next.js nosso objetivo é transf
 
 Você pode verificar o layout em [link](https://www.figma.com/file/UE276JTrrDHN8xP4JGHqtd/Alurakut-(Copy)). 
 
-## :memo: Licença
-
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.md) para mais detalhes.
-
 ## Teste o Projeto em sua máquina:
 
 #### Instruções de instalação
