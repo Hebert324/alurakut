@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png">
+  <img src="https://raw.githubusercontent.com/Hebert324/alurakut/refs/heads/main/github/Alurakut.png">
 </div>
 
 ---
