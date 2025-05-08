@@ -38,6 +38,8 @@ Cada participante pôde personalizar sua versão com novos estilos e componentes
 
 ---
 
+### Acesse o projeto aqui: <a href="https://alurakut-web.vercel.app/login">Alurakut</a>
+
 ## 🎨 Layout
 
 Você pode visualizar o layout original do projeto no Figma:
