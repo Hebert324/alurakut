@@ -1,8 +1,6 @@
-<h1 align="center">📘 Alurakut</h1>
-
-<p align="center">
-  <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png" alt="Capa do projeto" width="80%">
-</p>
+<div align="center">
+  <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png">
+</div>
 
 ---
 
