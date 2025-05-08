@@ -4,7 +4,7 @@
 
 ---
 
-## 💻 Demonstração
+## Demonstração
 
 ### 🖥️ Versão Desktop
 
