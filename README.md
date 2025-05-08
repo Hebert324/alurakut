@@ -1,63 +1,70 @@
-<div align="center">
-  <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png">
-</div>
+<h1 align="center">📘 Alurakut</h1>
 
-<br />
+<p align="center">
+  <img src="https://github.com/Hebert324/alurakut/blob/main/github/Alurakut.png" alt="Capa do projeto" width="80%">
+</p>
 
-<h3 align="center">Versão de Desktop:</h3>
-<img alt="gif-desktop" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut.gif">
+---
 
-<div align="center">
-  <h3>Versão de Celular:</h3>
-  <img alt="gif-cell" width="300px" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut-cell.gif">
-</div>
-  
-## Sobre o Projeto:
+## 💻 Demonstração
 
-Nesta imersão recriamos uma das nostalgicas rede social que tivemos no passado.
+### 🖥️ Versão Desktop
 
-Nós revivemos a nossa querida rede social Orkut, com algumas mudanças e implementações, cada um deixou a rede com a sua cara, assim utilizamos das novas tecnologias para recriar a interface dele.
+<img alt="gif-desktop" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut.gif" width="100%">
 
-Dentro de 5 dias com utilização de React.js e Next.js nosso objetivo é transformar ela em uma aplicação composta por uma /Homepage e /Login page com foco em /Single Page Application. 
+### 📱 Versão Mobile
 
-### Acesse o projeto aqui: <a href="https://alurakut-web.vercel.app/login">Alurakut</a>
+<p align="center">
+  <img alt="gif-mobile" src="https://github.com/Hebert324/alurakut/blob/main/github/alurakut-cell.gif" width="300px">
+</p>
 
-## 🚀 Tecnologies Utilizadas
+---
 
-- React
-- Next
-- JavaScript
-- Styled-Components
-- DatoCMS
+## 📌 Sobre o Projeto
 
-## 🔖 Layout
+O **Alurakut** é uma recriação nostálgica da antiga rede social **Orkut**, desenvolvida durante a Imersão React da [Alura](https://www.alura.com.br).
 
-Você pode verificar o layout em [link](https://www.figma.com/file/UE276JTrrDHN8xP4JGHqtd/Alurakut-(Copy)). 
+Foram 5 dias de projeto com o objetivo de criar uma aplicação moderna, utilizando **React.js** e **Next.js**, com rotas de login, home e perfil, seguindo o conceito de **Single Page Application (SPA)**.
 
-## Teste o Projeto em sua máquina:
+Cada participante pôde personalizar sua versão com novos estilos e componentes, revivendo o clássico de um jeito moderno e responsivo.
 
-#### Instruções de instalação
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![Next.js](https://img.shields.io/badge/NEXT.JS-000000?style=for-the-badge&logo=next.js&logoColor=white)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)
+- ![Styled-Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=fff)
+- ![DatoCMS](https://img.shields.io/badge/DatoCMS-FF7751?style=for-the-badge&logo=datocms&logoColor=fff)
+
+---
+
+## 🎨 Layout
+
+Você pode visualizar o layout original do projeto no Figma:
+
+🔗 [Acessar o layout no Figma](https://www.figma.com/file/UE276JTrrDHN8xP4JGHqtd/Alurakut-(Copy))
+
+---
+
+## 🧪 Como testar na sua máquina
 
 ```bash
-# Clonar o repositório.
-$ git clone https://github.com/Hebert324/Rocket.q
+# Clone o repositório
+git clone https://github.com/Hebert324/alurakut.git
 
-# Ou
-# Ir no code (botãozinho verde) e fazer download do zip.
+# Acesse a pasta
+cd alurakut
 
-# Entrar na pasta da aplicação.
-$ cd rocketq
+# Instale as dependências
+npm install
 
-# ou abrir o terminal do VScode quando estiver na pasta do projeto.
+# Inicie o servidor de desenvolvimento
+npm run dev
 
-# Instalar as dependências.
-$ npm install ou yarn
-
-# Iniciar o servidor.
-$ npm start ou yarn
-
-# abra o navegador e digite.
-$ http://localhost:3000
+# Acesse no navegador
+http://localhost:3000
 ```
 
 ## :memo: Licença
